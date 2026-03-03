@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Bags - Professional Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --rose-deep: #b5205e;
+            --rose-mid: #d63384;
+            --rose-light: #f48fb1;
+            --blush-bg: #fdf2f8;
+            --blush-soft: #fce4ec;
+            --blush-card: #fff8fb;
+            --text-dark: #3a1a2e;
+            --text-mid: #6d4560;
+            --text-light: #b08fa0;
+            --white: #ffffff;
+            --shadow-rose: 0 8px 32px rgba(182, 32, 94, 0.13);
+            --shadow-soft: 0 4px 20px rgba(182, 32, 94, 0.08);
+            --radius-card: 18px;
+            --radius-btn: 50px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fff5f8 50%, #fce4ec 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            background: linear-gradient(135deg, #b5205e 0%, #d63384 50%, #e91e8c 100%);
+            color: var(--white);
+            padding: 36px 24px 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+            position: relative;
+        }
+
+        header p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-top: 6px;
+            opacity: 0.88;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        /* ─── TOP BAR (cart icon) ─── */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 14px 28px;
+            background: rgba(253, 242, 248, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(214, 51, 132, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .cart-trigger {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--rose-deep), var(--rose-mid));
+            color: var(--white);
+            border: none;
+            padding: 11px 22px;
+            border-radius: var(--radius-btn);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(182, 32, 94, 0.3);
+        }
+
+        .cart-trigger:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 22px rgba(182, 32, 94, 0.4);
+        }
+
+        .cart-badge {
+            background: var(--white);
+            color: var(--rose-deep);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        /* ─── SECTION TITLE ─── */
+        .section-title {
+            text-align: center;
+            padding: 36px 16px 12px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--rose-deep);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .section-title p {
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            margin-top: 6px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose-mid), var(--rose-light));
+            border-radius: 2px;
+            margin: 12px auto 0;
+        }
+
+        /* ─── PRODUCTS GRID ─── */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px 20px 40px;
+            gap: 24px;
+        }
+
+        /* ─── PRODUCT CARD ─── */
+        .card {
+            background: var(--blush-card);
+            width: 310px;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.32s cubic-bezier(.25, .8, .25, 1),
+                box-shadow 0.32s ease;
+            border: 1px solid rgba(214, 51, 132, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.015);
+            box-shadow: var(--shadow-rose);
+            border-color: rgba(214, 51, 132, 0.18);
+        }
+
+        /* ─── IMAGE CONTAINER ─── */
+        .img-container {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            background: linear-gradient(160deg, #fff4f8, #fce4ec);
+            overflow: hidden;
+            border-radius: var(--radius-card) var(--radius-card) 0 0;
+        }
+
+        .img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            padding: 12px;
+            transition: opacity 0.38s ease-in-out, transform 0.38s ease;
+        }
+
+        .img-container .hover-img {
+            opacity: 0;
+        }
+
+        .card:hover .hover-img {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+
+        .card:hover .main-img {
+            opacity: 0;
+        }
+
+        /* "New" badge */
+        .img-container::after {
+            content: '✨ New';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, var(--rose-deep), var(--rose-mid));
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            pointer-events: none;
+        }
+
+        /* ─── CARD BODY ─── */
+        .card-body {
+            padding: 18px 20px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            border-top: 1px solid rgba(214, 51, 132, 0.08);
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: 0.3px;
+        }
+
+        .price {
+            color: var(--rose-deep);
+            font-size: 1.15rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .card-hint {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: linear-gradient(135deg, #4a0e2e 0%, #7b1550 50%, #b5205e 100%);
+            color: rgba(255, 255, 255, 0.88);
+            text-align: center;
+            padding: 28px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+        }
+
+        footer span {
+            color: var(--rose-light);
+        }
+
+        /* ─── PRODUCT POPUP ─── */
+        .product-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(58, 10, 40, 0.55);
+            backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .popup-content {
+            background: var(--white);
+            width: 90%;
+            max-width: 880px;
+            padding: 36px;
+            border-radius: 22px;
+            display: flex;
+            gap: 40px;
+            position: relative;
+            box-shadow: 0 24px 64px rgba(58, 10, 40, 0.3);
+            animation: popIn 0.3s cubic-bezier(.25, .8, .25, 1);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.93);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-images {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .popup-images img#mainPopupImage {
+            width: 100%;
+            height: 340px;
+            object-fit: contain;
+            border-radius: 14px;
+            background: linear-gradient(160deg, #fff4f8, #fce4ec);
+            padding: 8px;
+            cursor: zoom-in;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .thumbnail-container img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background: var(--blush-soft);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            padding: 4px;
+        }
+
+        .thumbnail-container img:hover {
+            border-color: var(--rose-mid);
+            transform: scale(1.07);
+        }
+
+        .popup-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-mid);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--blush-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            line-height: 1;
+        }
+
+        .close-popup:hover {
+            background: var(--rose-mid);
+            color: white;
+        }
+
+        .popup-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .popup-info h3 {
+            font-size: 1.4rem;
+            color: var(--rose-deep);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .popup-info p {
+            font-size: 0.93rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+        }
+
+        .popup-info .rating {
+            color: #f4a018;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        #popupAddBtn {
+            background: linear-gradient(135deg, var(--rose-deep), var(--rose-mid));
+            border: none;
+            border-radius: var(--radius-btn);
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(182, 32, 94, 0.3);
+            align-self: flex-start;
+        }
+
+        #popupAddBtn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 28px rgba(182, 32, 94, 0.4);
+        }
+
+        /* ─── CART SIDEBAR ─── */
+        .cart {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 360px;
+            height: 100%;
+            background: var(--white);
+            padding: 28px 24px;
+            box-shadow: -6px 0 32px rgba(58, 10, 40, 0.16);
+            overflow-y: auto;
+            font-family: 'Poppins', sans-serif;
+            z-index: 1000;
+            border-left: 1px solid rgba(214, 51, 132, 0.1);
+        }
+
+        .cart h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--blush-soft);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--blush-soft);
+            gap: 10px;
+        }
+
+        .cart-item>div:first-child span {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .cart-item>div:first-child br+* {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+        }
+
+        .cart-item button {
+            background: var(--blush-soft);
+            border: none;
+            border-radius: 8px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: var(--rose-deep);
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .cart-item button:hover {
+            background: var(--rose-mid);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .cart hr {
+            border: none;
+            border-top: 1px solid var(--blush-soft);
+            margin: 14px 0;
+        }
+
+        .cart p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 14px 0;
+        }
+
+        .cart p span {
+            color: var(--rose-deep);
+        }
+
+        .cart input[type="text"],
+        .cart input[type="tel"] {
+            width: 100%;
+            padding: 11px 14px;
+            margin-bottom: 10px;
+            border: 1.5px solid rgba(214, 51, 132, 0.2);
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: var(--blush-card);
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .cart input:focus {
+            border-color: var(--rose-mid);
+            background: white;
+        }
+
+        .cart input::placeholder {
+            color: var(--text-light);
+        }
+
+        .cart button#submitOrderBtn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: var(--radius-btn);
+            background: linear-gradient(135deg, var(--rose-deep), var(--rose-mid));
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(182, 32, 94, 0.3);
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .cart button#submitOrderBtn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 10px 26px rgba(182, 32, 94, 0.42);
+        }
+
+        /* ─── IMAGE ZOOM POPUP ─── */
+        .image-zoom-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            cursor: zoom-out;
+        }
+
+        .image-zoom-popup img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s cubic-bezier(.25, .8, .25, 1);
+            cursor: default;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-zoom {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .zoom-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.4);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s, transform 0.2s;
+            user-select: none;
+        }
+
+        .zoom-nav:hover {
+            background: rgba(214, 51, 132, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .zoom-prev {
+            left: 30px;
+        }
+
+        .zoom-next {
+            right: 30px;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 680px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+
+            .popup-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .cart {
+                width: 100%;
+            }
+
+            .card {
+                width: 90%;
+                max-width: 340px;
+            }
+
+            /* Mobile Zoom Enhancements */
+            .close-zoom {
+                top: 15px;
+                right: 20px;
+                font-size: 35px;
+                /* Larger touch target */
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.4);
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .zoom-nav {
+                width: 44px;
+                height: 44px;
+                font-size: 30px;
+                background: rgba(214, 51, 132, 0.5);
+                /* Make more visible */
+            }
+
+            .zoom-prev {
+                left: 15px;
+            }
+
+            .zoom-next {
+                right: 15px;
+            }
+
+            .image-zoom-popup img {
+                max-width: 95%;
+                max-height: 85%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Elegant Women Bags</h1>
+        <p>New Collection 2026</p>
+    </header>
+
+    <div class="top-bar">
+        <button class="cart-trigger" onclick="toggleCart()">
+            🛒 My Cart <span class="cart-badge" id="cart-count">0</span>
+        </button>
+    </div>
+
+    <div class="section-title">
+        <h2>Our Collection</h2>
+        <p>Handpicked styles for every occasion</p>
+        <div class="divider"></div>
+    </div>
+
+    <section class="container">
+
+        <div class="card"
+            onclick="openPopup('Olive Green Bag',70,'pic of bags/image-1.png','pic of bags/image-15.jpg')">
+            <div class="img-container">
+                <img src="pic of bags/image-1.png" class="main-img" alt="Olive Green Bag">
+                <img src="pic of bags/image-15.jpg" class="hover-img" alt="Olive Green Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Olive Green Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Olive Green Bag',70,'pic of bags/image-2.png','pic of bags/image-10.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-2.png" class="main-img" alt="Olive Green Bag">
+                <img src="pic of bags/image-10.png" class="hover-img" alt="Olive Green Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Olive Green Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-3.png','pic of bags/image-11.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-3.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-11.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Verde Luxe Hobogan',70,'pic of bags/image-4.png','pic of bags/image-9.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-4.png" class="main-img" alt="Verde Luxe Hobogan">
+                <img src="pic of bags/image-9.png" class="hover-img" alt="Verde Luxe Hobogan Back">
+            </div>
+            <div class="card-body">
+                <h3>Verde Luxe Hobogan</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-5.png','pic of bags/image-13.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-5.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-13.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-6.png','pic of bags/image-14.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-6.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-14.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-7.png','pic of bags/image-12.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-7.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-12.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-17.png','pic of bags/image-18.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-17.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-18.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-20.jpg','pic of bags/image-21.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-20.jpg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-21.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-22.png','pic of bags/image-23.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-22.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-23.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-24.jpg','pic of bags/image-25.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-24.jpg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-25.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-26.jpg','pic of bags/image-27.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-26.jpg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-27.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-29.jpg','pic of bags/image-28.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-29.jpg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-28.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-30.jpg','pic of bags/image-31.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-30.jpg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-31.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-32.jpeg','pic of bags/image-33.jpeg')">
+            <div class="img-container">
+                <img src="pic of bags/image-32.jpeg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-33.jpeg" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-34.png','pic of bags/image-35.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-34.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-35.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+ <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-36.png','pic of bags/image-37.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-36.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-37.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+         <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-38.png','pic of bags/image-39.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-38.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-39.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-40.png','pic of bags/image-41.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-40.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-41.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+                <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-42.png','pic of bags/image-43.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-42.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-43.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+         <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-44.jpeg','pic of bags/image-45.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-44.jpeg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-45.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-46.jpeg','pic of bags/image-47.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-46.jpeg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-47.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+                        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-48.png','pic of bags/image-49.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-48.png" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-49.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+                        <div class="card"
+            onclick="openPopup('Modern Shoulder Bag',70,'pic of bags/image-50.jpeg','pic of bags/image-51.png')">
+            <div class="img-container">
+                <img src="pic of bags/image-50.jpeg" class="main-img" alt="Modern Shoulder Bag">
+                <img src="pic of bags/image-51.png" class="hover-img" alt="Modern Shoulder Bag Back">
+            </div>
+            <div class="card-body">
+                <h3>Modern Shoulder Bag</h3>
+                <p class="price">70€</p>
+                <span class="card-hint">Click to view details</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- IMAGE ZOOM POPUP -->
+    <div class="image-zoom-popup" id="imageZoomPopup">
+        <span class="close-zoom" onclick="closeImageZoom(event)">✕</span>
+        <div class="zoom-nav zoom-prev" onclick="changeZoomImage(-1)">❮</div>
+        <img id="zoomedImage" alt="Zoomed Product">
+        <div class="zoom-nav zoom-next" onclick="changeZoomImage(1)">❯</div>
+    </div>
+
+    <!-- PRODUCT POPUP -->
+    <div class="product-popup" id="productPopup" onclick="handlePopupBgClick(event)">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">✕</span>
+
+            <div class="popup-images">
+                <img id="mainPopupImage" alt="Product">
+                <div class="thumbnail-container">
+                    <img id="thumb1" alt="View 1">
+                    <img id="thumb2" alt="View 2">
+                </div>
+            </div>
+
+            <div class="popup-info">
+                <h2 id="popupTitle"></h2>
+                <h3 id="popupPrice"></h3>
+                <p>High quality elegant women bag. Premium modern design with spacious interior and stylish look.</p>
+                <div class="rating">⭐⭐⭐⭐☆</div>
+                <button id="popupAddBtn"><span>🛒</span> Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart" id="cart">
+        <span class="close-popup" onclick="toggleCart()"
+            style="position:relative;top:auto;right:auto;display:inline-flex;margin-bottom:8px;">✕</span>
+        <h2>My Cart</h2>
+
+        <div id="cart-items"></div>
+        <hr>
+        <p>Total: €<span id="cart-total">0</span></p>
+        <hr>
+
+        <input type="text" id="customer-name" placeholder="Full Name">
+        <input type="tel" id="customer-phone" placeholder="Phone Number">
+        <input type="text" id="customer-address" placeholder="City / Address">
+
+        <button id="submitOrderBtn" onclick="submitOrder()">Submit Order</button>
+    </div>
+
+    <footer>
+        <p>© 2026 Elegant Bags <span>♥</span> All Rights Reserved</p>
+    </footer>
+
+    <script>
+        class ShoppingCart {
+            constructor() {
+                this.cart = JSON.parse(localStorage.getItem("cart")) || [];
+                this.updateCart();
+            }
+
+            saveCart() {
+                localStorage.setItem("cart", JSON.stringify(this.cart));
+            }
+
+            addItem(name, price) {
+                const existing = this.cart.find(item => item.name === name);
+                if (existing) { existing.quantity++; }
+                else { this.cart.push({ name, price, quantity: 1 }); }
+                this.saveCart();
+                this.updateCart();
+            }
+
+            removeItem(name) {
+                const existing = this.cart.find(item => item.name === name);
+                if (existing) {
+                    existing.quantity--;
+                    if (existing.quantity <= 0) {
+                        this.cart = this.cart.filter(item => item.name !== name);
+                    }
+                }
+                this.saveCart();
+                this.updateCart();
+            }
+
+            getTotal() {
+                return this.cart.reduce((t, i) => t + i.price * i.quantity, 0);
+            }
+
+            updateCart() {
+                const itemsDiv = document.getElementById("cart-items");
+                itemsDiv.innerHTML = "";
+                let totalItems = 0;
+
+                this.cart.forEach((item, index) => {
+                    totalItems += item.quantity;
+                    itemsDiv.innerHTML += `
+<div class="cart-item">
+    <div>
+        <span>${item.name}</span> <br>
+        €${item.price} x ${item.quantity}
+    </div>
+    <div>
+        <button onclick="cart.removeItem('${item.name}')">−</button>
+        <button onclick="cart.addItem('${item.name}',${item.price})">+</button>
+        <button onclick="cart.cart.splice(${index},1);cart.saveCart();cart.updateCart();">✕</button>
+    </div>
+</div>`;
+                });
+
+                document.getElementById("cart-total").innerText = this.getTotal();
+                document.getElementById("cart-count").innerText = totalItems;
+            }
+
+            submitOrder() {
+                const name = document.getElementById("customer-name").value;
+                const phone = document.getElementById("customer-phone").value;
+                const address = document.getElementById("customer-address").value;
+
+                if (!name || !phone || !address || this.cart.length === 0) {
+                    alert("Fill all info and add products!");
+                    return;
+                }
+
+                let message = "🛍 New Order %0A%0A";
+                this.cart.forEach((item, i) => {
+                    message += `${i + 1}. ${item.name} x ${item.quantity} - €${item.price}%0A`;
+                });
+                message += `%0ATotal: €${this.getTotal()}%0A%0AName:${name}%0APhone:${phone}%0AAddress:${address}`;
+
+                window.open(`https://wa.me/212770738474?text=${message}`, "_blank");
+
+                this.cart = [];
+                this.saveCart();
+                this.updateCart();
+                toggleCart();
+            }
+        }
+
+        const cart = new ShoppingCart();
+
+        function toggleCart() {
+            const c = document.getElementById("cart");
+            c.style.display = c.style.display === "block" ? "none" : "block";
+        }
+
+        function submitOrder() {
+            cart.submitOrder();
+        }
+
+        let currentZoomImages = [];
+        let currentZoomIndex = 0;
+
+        function openPopup(name, price, img1, img2) {
+            document.getElementById("productPopup").style.display = "flex";
+            document.getElementById("popupTitle").innerText = name;
+            document.getElementById("popupPrice").innerText = "€" + price;
+            document.getElementById("mainPopupImage").src = img1;
+            document.getElementById("thumb1").src = img1;
+            document.getElementById("thumb2").src = img2;
+
+            currentZoomImages = [img1, img2];
+
+            document.getElementById("thumb1").onclick = () => { document.getElementById("mainPopupImage").src = img1; }
+            document.getElementById("thumb2").onclick = () => { document.getElementById("mainPopupImage").src = img2; }
+
+            document.getElementById("mainPopupImage").onclick = () => { openImageZoom(document.getElementById("mainPopupImage").src); }
+            document.getElementById("popupAddBtn").onclick = () => { cart.addItem(name, price); }
+        }
+
+        function closePopup() {
+            document.getElementById("productPopup").style.display = "none";
+        }
+
+        function handlePopupBgClick(e) {
+            if (e.target === document.getElementById("productPopup")) closePopup();
+        }
+
+        function openImageZoom(imgSrc) {
+            currentZoomIndex = currentZoomImages.indexOf(imgSrc);
+            if (currentZoomIndex === -1) currentZoomIndex = 0; // fallback
+
+            document.getElementById("zoomedImage").src = currentZoomImages[currentZoomIndex];
+            document.getElementById("imageZoomPopup").style.display = "flex";
+
+            // Add keyboard listener when opened
+            document.addEventListener('keydown', handleZoomKeyboard);
+        }
+
+        function closeImageZoom(e) {
+            if (e && e.target.id !== 'imageZoomPopup' && !e.target.classList.contains('close-zoom')) {
+                return; // only close when clicking bg or X
+            }
+            document.getElementById("imageZoomPopup").style.display = "none";
+            document.removeEventListener('keydown', handleZoomKeyboard);
+        }
+
+        // Add click listener to background outside the image/buttons
+        document.getElementById("imageZoomPopup").addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeImageZoom();
+            }
+        });
+
+        function changeZoomImage(direction) {
+            currentZoomIndex += direction;
+
+            // Wrap around
+            if (currentZoomIndex >= currentZoomImages.length) {
+                currentZoomIndex = 0;
+            } else if (currentZoomIndex < 0) {
+                currentZoomIndex = currentZoomImages.length - 1;
+            }
+
+            const imgEl = document.getElementById("zoomedImage");
+            // Reset animation
+            imgEl.style.animation = 'none';
+            imgEl.offsetHeight; /* trigger reflow */
+            imgEl.style.animation = null;
+
+            imgEl.src = currentZoomImages[currentZoomIndex];
+        }
+
+        function handleZoomKeyboard(e) {
+            if (e.key === 'ArrowRight') {
+                changeZoomImage(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeZoomImage(-1);
+            } else if (e.key === 'Escape') {
+                closeImageZoom();
+            }
+        }
+
+        // --- Swipe Gestures for Mobile ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const zoomPopupEl = document.getElementById('imageZoomPopup');
+
+        zoomPopupEl.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        zoomPopupEl.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum distance to register swipe
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Swiped Left - Next Image
+                changeZoomImage(1);
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Swiped Right - Previous Image
+                changeZoomImage(-1);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
